@@ -32,6 +32,15 @@
 
                <a href=""><h2><?php the_title() ?></h2></a> 
                 <p><?php the_content(); ?></p>
+
+
+                <!-- ACF all function
+            ===================================== -->
+
+    <?php
+     if(get_post_format() == 'image' && class_exists('the_field') ) :  ?>
+               
+                     
                 <?php if(get_field('camera-model')): ?>
                 <strong>Model : </strong><?php the_field('camera-model') ?> <br>
                 <?php endif; ?>
@@ -97,9 +106,69 @@
             <?php endif; ?>
             
 
+    <?php endif; ?>
+
+                    <!-- ACF all function
+            ===================================== -->
+
+            <!-- Cmb2 all function
+            ===================================== -->
+
+            <?php
+     if(get_post_format() == 'image' && class_exists('CMB2') ) :  ?>
+               
+               <?php
+                $alpha_camera_model = get_post_meta(get_the_ID(),'_alpha_camera',true);
+                $alpha_camera_location = get_post_meta(get_the_id(),'_alpha_location',true);
+                $alpha_time = get_post_meta(get_the_id(),'_alpha_time',true);
+                $alpha_license = get_post_meta(get_the_id(),'_alpha_license_',true);
+                $alpha_license_information = get_post_meta(get_the_id(),'_alpha_licensed',true);
+
+                ?>
+                     
+                <?php if($alpha_camera_model): ?>
+                <strong>Model : </strong><?php echo esc_html($alpha_camera_model) ?> <br>
+                <?php endif; ?>
+                <?php if($alpha_camera_location): ?>
+                <strong>Location : </strong><?php echo esc_html($alpha_camera_location) ?> <br>
+                <?php endif; ?>
+                <?php if( $alpha_time): ?>
+                <strong>Time : </strong><?php echo esc_html($alpha_time) ?> <br>
+                <?php endif; ?>
+
                 
-               
-               
+
+                <?php
+                    if($alpha_license):
+                ?>
+                <strong>License : </strong> <?php echo esc_html($alpha_license_information); ?> 
+                <?php endif; ?><br>
+
+               <p>
+               <?php
+                    $alpha_image = get_post_meta(get_the_id(),'_alpha_image_field_id',true);
+                    $alpha_image_details = wp_get_attachment_image_src($alpha_image,'medium');
+                    echo "<img src='".esc_url($alpha_image_details[0])."'/>";
+                ?>
+               </p>
+                <br>
+
+                <p>
+                <?php
+                    $alpha_file = get_post_meta(get_the_id(),'_alpha_resume',true);
+                    echo esc_url($alpha_file);
+                ?>
+                </p>
+
+    <?php endif; ?>
+
+
+
+
+             <!-- Cmb2 all function
+            ===================================== -->
+
+
 
                 <div class="author_meta">
                     <div class="row">

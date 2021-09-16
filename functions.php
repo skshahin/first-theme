@@ -1,6 +1,7 @@
 <?php
 require_once get_theme_file_path('/inc/example.php');
-require_once get_theme_file_path('/inc/acf.php');
+// require_once get_theme_file_path('/inc/acf.php');
+require_once get_theme_file_path('/inc/cmb2-md.php');
 
 if(site_url() == 'http://localhost/html2wordpress'){
     define('version',time());
@@ -13,6 +14,9 @@ function alpha_script(){
     wp_enqueue_style('bootstrap','//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
     wp_enqueue_style('featherlight_css','//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css');
     wp_enqueue_style('dashicons');
+
+    
+    wp_enqueue_style('font-awesome','//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
     wp_enqueue_style('main_style',get_stylesheet_uri());
 
     wp_enqueue_script('featherlight_js','//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js',array('jquery'),version,true);
@@ -119,7 +123,7 @@ if(!function_exists('alpha_body_class')){
      require get_template_directory().'/lib/attachments.php';
 }
 
-add_filter('acf/settings/show_admin','__return_false');
+// add_filter('acf/settings/show_admin','__return_false');
 
 
 
